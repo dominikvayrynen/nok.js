@@ -9,3 +9,5 @@ nok(array, canvasID, color, width, height)
 nok([1,2,3,4,5], "MyCanvas", "black")
 nok(MyArrayVariable, "MyCanvas", "rgba(0,0,0,0.7)", 1000, 200)
 ```
+
+Examples: https://dominikvayrynen.github.io/nok.js/
