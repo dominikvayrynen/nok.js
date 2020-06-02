@@ -1,0 +1,31 @@
+<head>
+  <link rel="stylesheet" href="/examples/styles.css">
+</head>
+<a href="../index.html">Back</a>
+<br>
+
+<canvas id="canvas"></canvas>
+<script src="../nok.js"></script>
+<script>
+
+let sampleData = []
+
+setInterval(function(){
+
+  function random(min, max) {
+    return min + Math.random() * (max - min);
+  }
+
+  let i = 0;
+  while(i < random(70, 1000)) {
+    sampleData.push(Math.random()*10000)
+    i++
+  }
+
+  nok(sampleData)
+
+  sampleData = []
+
+}, 100);
+
+</script>

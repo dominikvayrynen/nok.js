@@ -1,0 +1,49 @@
+<head>
+  <link rel="stylesheet" href="/examples/styles.css">
+</head>
+<style>
+  .parent {
+    width: 90vw;
+    height: 30vh;
+  }
+</style>
+<a href="../index.html">Back</a>
+<br>
+<p>nok.js isn't responsive by default, but you can implement your own responsive solution by re-rendering the chart with new width and height.</p>
+<div class="parent">
+  <canvas id="canvas"></canvas>
+</div>
+
+<script src="../nok.js"></script>
+<script>
+
+let sampleData = []
+
+// Create some sample data
+let i = 0;
+while(i < 200) {
+	sampleData.push(Math.random()*1000)
+  i++
+}
+
+// Get height and width of canvas parent element
+let canvasParentWidth = document.getElementById("canvas").parentElement.clientWidth; 
+let canvasParentHeight = document.getElementById("canvas").parentElement.clientHeight; 
+
+function responsiveNok() {
+  nok(sampleData, "canvas", "black", canvasParentWidth, canvasParentHeight)
+}
+
+responsiveNok()
+
+window.addEventListener('resize', () => { 
+  canvasParentWidth = document.getElementById("canvas").parentElement.clientWidth; 
+  canvasParentHeight = document.getElementById("canvas").parentElement.clientHeight; 
+
+  canvas.width = canvasParentWidth;
+  canvas.height = canvasParentHeight;  
+
+  responsiveNok()
+ });
+</script>
+
