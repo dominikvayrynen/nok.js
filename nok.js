@@ -1,46 +1,46 @@
 function nok(array, canvasID, color, width, height) {
-  var canvasID = "canvas";
-  var color = "rgba(0, 0, 0, 0.8)"
-  var canvasWidth = 1000;
-  var canvasHeight = 200;
+  var defaultCanvasID = "canvas";
+  var defaultColor = "rgba(0, 0, 0, 0.8)"
+  var defaultCanvasWidth = 1000;
+  var defaultCanvasHeight = 200;
 
   if (canvasID !== undefined) {
-    canvasID = canvasID;
+    defaultCanvasID = canvasID;
   }
 
   if (color !== undefined) {
-    color = color;
+    defaultColor = color;
   }
 
   if (width !== undefined) {
-    canvasWidth = width;
+    defaultCanvasWidth = width;
   }
 
   if (height !== undefined) {
-    canvasHeight = height;
+    defaultCanvasHeight = height;
   }
 
   let data = array
   let normalizedData = []
 
-  let ratio = Math.max.apply(Math, data) / canvasHeight;
+  let ratio = Math.max.apply(Math, data) / defaultCanvasHeight;
   normalizedData = []
   for ( i = 0; i < data.length; i++ ) {
     normalizedData.push( Math.round(data[i] / ratio) )
   }
 
-  var lineWidth = canvasWidth / data.length
+  var lineWidth = defaultCanvasWidth / data.length
 
-  var canvas = document.getElementById(canvasID);
-  canvas.width = canvasWidth;
-  canvas.height = canvasHeight;
+  var canvas = document.getElementById(defaultCanvasID);
+  canvas.width = defaultCanvasWidth;
+  canvas.height = defaultCanvasHeight;
 
   var ctx = canvas.getContext("2d");
 
   var position = 0
   normalizedData.forEach(function (item, index) {
       ctx.fillStyle = color;
-      ctx.fillRect(position,canvasHeight,lineWidth, -item);
+      ctx.fillRect(position,defaultCanvasHeight,lineWidth, -item);
       position += lineWidth
   });
 }
